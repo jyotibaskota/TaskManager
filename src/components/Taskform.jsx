@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const TaskForm = ({ onAdd }) => {
   const [newTask, setNewTask] = useState("");
@@ -12,15 +12,20 @@ const TaskForm = ({ onAdd }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter a new task"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-      />
-      <button type="submit">Add Task</button>
-    </form>
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter a new task"
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+        />
+        <button type="submit">Add Task</button>
+        <button type="submit">
+          <a href="https://github.com/raunakjoshi/TaskManager">Git</a>
+        </button>
+      </form>
+    </div>
   );
 };
 
