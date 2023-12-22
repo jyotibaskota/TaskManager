@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import TaskList from "./components/Tasklist";
 import TaskForm from "./components/Taskform";
 
@@ -70,7 +70,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="cont">
       <h1>Task List</h1>
       <TaskList tasks={tasks} onDelete={deleteTask} onUpdate={updateTask} />
       <TaskForm onAdd={addTask} />
