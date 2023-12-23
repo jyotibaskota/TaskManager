@@ -17,10 +17,26 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onDelete, onUpdate }) => {
   return (
     <ul>
       {tasks.map((task) => (
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
           <li key={task.id}>
-            <span> {task.id}</span>
-            <span>{task.title}</span>
+            <span
+              style={{
+                color: "black",
+                fontFamily: "cursive",
+              }}
+            >
+              {" "}
+              {task.id}
+            </span>
+            <span
+              style={{
+                color: "black",
+                marginLeft: "10px",
+                fontFamily: "cursive",
+              }}
+            >
+              {task.title}
+            </span>
 
             <div></div>
             <div className="flex space-x-4 flex justify-center">
