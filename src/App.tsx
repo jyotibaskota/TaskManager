@@ -1,9 +1,16 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import TaskList from "./components/Tasklist";
 import TaskForm from "./components/Taskform";
 
-const App = () => {
-  const [tasks, setTasks] = useState([]);
+interface Task {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+const App: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,7 +18,7 @@ const App = () => {
         const response = await fetch(
           "https://jsonplaceholder.typicode.com/todos/"
         );
-        const data = await response.json();
+        const data: Task[] = await response.json();
         setTasks(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -21,7 +28,7 @@ const App = () => {
     fetchData();
   }, []);
 
-  const deleteTask = async (taskId) => {
+  const deleteTask = async (taskId: number) => {
     try {
       await fetch(`https://jsonplaceholder.typicode.com/todos/${taskId}`, {
         method: "DELETE",
@@ -33,7 +40,7 @@ const App = () => {
     }
   };
 
-  const updateTask = (task) => {
+  const updateTask = (task: Task) => {
     const updatedTitle = prompt("Enter the updated title:", task.title);
 
     if (updatedTitle !== null) {
@@ -45,7 +52,7 @@ const App = () => {
     }
   };
 
-  const addTask = async (newTaskTitle) => {
+  const addTask = async (newTaskTitle: string) => {
     try {
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/todos/",
@@ -61,7 +68,7 @@ const App = () => {
         }
       );
 
-      const newTaskData = await response.json();
+      const newTaskData: Task = await response.json();
 
       setTasks((prevTasks) => [...prevTasks, newTaskData]);
     } catch (error) {
@@ -70,10 +77,12 @@ const App = () => {
   };
 
   return (
-    <div className="cont">
-      <h1>Task List</h1>
-      <TaskList tasks={tasks} onDelete={deleteTask} onUpdate={updateTask} />
+    <div className="bg-blue-400 bg-opacity-70">
+      <h1 className="flex justify-center text-3xl font-bold underline">
+        Task List
+      </h1>
       <TaskForm onAdd={addTask} />
+      <TaskList tasks={tasks} onDelete={deleteTask} onUpdate={updateTask} />
     </div>
   );
 };
