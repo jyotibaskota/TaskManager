@@ -19,40 +19,60 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onDelete, onUpdate }) => {
       {tasks.map((task) => (
         <div className="flex justify-center space-x-4">
           <li key={task.id}>
-            <span
-              style={{
-                color: "black",
-                fontFamily: "cursive",
-              }}
-            >
-              {" "}
-              {task.id}
-            </span>
-            <span
-              style={{
-                color: "black",
-                marginLeft: "10px",
-                fontFamily: "cursive",
-              }}
-            >
-              {task.title}
-            </span>
-
-            <div></div>
-            <div className="flex space-x-4 flex justify-center">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => onUpdate(task)}
+            <div>
+              <span
+                style={{
+                  color: "black",
+                  fontFamily: "cursive",
+                }}
               >
-                Update
-              </button>
-
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => onDelete(task.id)}
+                {" "}
+                {task.id}
+              </span>
+              <span
+                style={{
+                  color: "black",
+                  marginLeft: "10px",
+                  fontFamily: "cursive",
+                }}
               >
-                Delete
-              </button>
+                Title:
+                <span
+                  style={{
+                    color: "black",
+                    marginLeft: "10px",
+                    fontFamily: "cursive",
+                  }}
+                >
+                  {task.title}
+                </span>
+              </span>
+              <div
+                style={{
+                  color: "black",
+                  marginLeft: "40px",
+                  fontFamily: "cursive",
+                }}
+              >
+                Completed: {String(task.completed)}
+              </div>
+
+              <div></div>
+              <div className="flex space-x-4 flex justify-center">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => onUpdate(task)}
+                >
+                  Update
+                </button>
+
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => onDelete(task.id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           </li>
         </div>

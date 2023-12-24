@@ -78,10 +78,10 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-blue-400 bg-opacity-70">
+      <TaskForm onAdd={addTask} />
       <h1 className="flex justify-center text-3xl font-bold underline">
         Task List
       </h1>
-      <TaskForm onAdd={addTask} />
       <TaskList tasks={tasks} onDelete={deleteTask} onUpdate={updateTask} />
     </div>
   );
